@@ -5,7 +5,6 @@ export default function useAuthListener() {
   const [user, setUser] = useState(pocketbaseClient.authStore?.model || null);
   useEffect(() => {
     const listener = pocketbaseClient.authStore.onChange((newToken) => {
-      console.log({ newToken });
       if (newToken) {
         setUser(pocketbaseClient.authStore.model);
       } else {
