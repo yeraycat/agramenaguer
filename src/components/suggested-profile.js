@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import { FILES_URL } from "../constants/pocketbase";
 import { follow } from "../lib/pocketbase";
 
 export default function SuggestedProfile({
@@ -15,7 +16,7 @@ export default function SuggestedProfile({
         {avatar && (
           <img
             className="rounded-full w-8 h-8 flex mr-3"
-            src={`/api/files/systemprofiles0/${profileId}/${avatar}`}
+            src={`${FILES_URL}systemprofiles0/${profileId}/${avatar}`}
           />
         )}
         {!avatar && (
@@ -26,7 +27,7 @@ export default function SuggestedProfile({
         <div className="mr-3">{username}</div>
       </div>
       <button
-        className="w-28 border-2  border-black-light hover:text-white hover:bg-black-light w-full rounded h-8 font-bold px-2"
+        className="w-28 border-2 border-black-light hover:text-white hover:bg-black-light w-full rounded h-8 font-bold px-2"
         onClick={async () => {
           await follow(activeUsersProfileId, profileId);
           setFollowed(true);

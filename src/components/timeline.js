@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from "react";
+import Skeleton from "react-loading-skeleton";
 import FollowingContext from "../context/following";
 import UserContext from "../context/user";
 import { inFilter } from "../helpers/filter";
-import { getFollowing, getTimeline, pocketbaseClient } from "../lib/pocketbase";
+import { getTimeline, pocketbaseClient } from "../lib/pocketbase";
 import TimelinePost from "./timeline-post";
 
 export default function Timeline() {
   const { user } = useContext(UserContext);
   const { following } = useContext(FollowingContext);
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   useEffect(() => {
     async function timeline() {
       const paginatedTimeline = await getTimeline(following);
@@ -51,6 +52,7 @@ export default function Timeline() {
   }, [user, following]);
   return (
     <div className="w-full md:w-3/5 md:pr-12">
+      {!posts && <Skeleton count={3} height={400} />}
       {posts && posts.map((post) => <TimelinePost key={post.id} post={post} />)}
     </div>
   );

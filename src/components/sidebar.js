@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { FILES_URL } from "../constants/pocketbase";
 import UserContext from "../context/user";
 import Suggestions from "./suggestions";
 import User from "./user";
@@ -14,7 +15,7 @@ export default function Sidebar() {
             <User
               username={user.profile.username}
               fullName={user.profile.name}
-              imageUrl={`/api/files/systemprofiles0/${user.profile.id}/${user.profile.avatar}`}
+              imageUrl={`${FILES_URL}systemprofiles0/${user.profile.id}/${user.profile.avatar}`}
             />
           )}
           <div className="mt-2">
