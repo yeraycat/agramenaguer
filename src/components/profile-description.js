@@ -1,3 +1,3 @@
-export default function ProfileDescription() {
-  return <div>I'm the description of this profile</div>;
+export default function ProfileDescription({ description }) {
+  return <div>{description}</div>;
 }
