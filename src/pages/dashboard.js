@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Sidebar from "../components/sidebar";
@@ -9,7 +9,7 @@ import useFollowing from "../hooks/useFollowing";
 
 export default function Dashboard() {
   const { user } = useContext(UserContext);
-  const { following } = useFollowing(user.id);
+  const { following } = useFollowing(user?.id);
 
   const navigate = useNavigate();
   useEffect(() => {
