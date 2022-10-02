@@ -7,6 +7,7 @@ import {
   useNavigation,
   useResolvedPath,
 } from "react-router-dom";
+import { FILES_URL } from "../constants/pocketbase";
 
 import UserContext from "../context/user";
 
@@ -63,6 +64,50 @@ export default function Header() {
                     </svg>
                   )}
                 </Link>
+                <Link to="/create">
+                  {pathname !== "/create" ? (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-8 mr-6 text-black-light cursor-pointer"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
+                      />
+                    </svg>
+                  ) : (
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="w-8 mr-6 text-black-light cursor-pointer"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M12 2.25c-5.385 0-9.75 4.365-9.75 9.75s4.365 9.75 9.75 9.75 9.75-4.365 9.75-9.75S17.385 2.25 12 2.25zM12.75 9a.75.75 0 00-1.5 0v2.25H9a.75.75 0 000 1.5h2.25V15a.75.75 0 001.5 0v-2.25H15a.75.75 0 000-1.5h-2.25V9z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  )}
+                </Link>
+
+                <div className="flex items-center cursor-pointer mr-6">
+                  <Link to={`/p/${user.profile.username}`}>
+                    <img
+                      className={`rounded-full h-8 w-8 flex border-2 border-grey-background ${
+                        pathname === `/p/${user.profile.username}` &&
+                        "border-black-light"
+                      }`}
+                      src={`${FILES_URL}systemprofiles0/${user.profile.id}/${user.profile.avatar}`}
+                      alt="Profile"
+                    />
+                  </Link>
+                </div>
                 <button
                   onClick={() => {
                     pocketbaseClient.authStore.clear();
@@ -75,7 +120,7 @@ export default function Header() {
                     viewBox="0 0 24 24"
                     strokeWidth="1.5"
                     stroke="currentColor"
-                    className="w-8 mr-6 text-black-light cursor-pointer"
+                    className="w-8 text-black-light cursor-pointer"
                   >
                     <path
                       strokeLinecap="round"
@@ -84,18 +129,6 @@ export default function Header() {
                     />
                   </svg>
                 </button>
-                <div className="flex items-center cursor-pointer">
-                  <Link to={`/p/${user.profile.username}`}>
-                    <img
-                      className={`rounded-full h-8 w-8 flex border-2 border-grey-background ${
-                        pathname === `/p/${user.profile.username}` &&
-                        "border-black-light"
-                      }`}
-                      src={`/api/files/systemprofiles0/${user.profile.id}/${user.profile.avatar}`}
-                      alt="Profile"
-                    />
-                  </Link>
-                </div>
               </>
             ) : (
               <></>
