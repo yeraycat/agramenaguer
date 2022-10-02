@@ -34,17 +34,18 @@ function SignUp() {
           });
           await pocketbaseClient.users.authViaEmail(emailAddress, password);
           await pocketbaseClient.records.update("profiles", user.profile.id, {
+            username,
             name: fullName,
           });
           await pocketbaseClient.users.requestVerification(user.email);
-          navigate("/login");
+          navigate("/");
         } catch (e) {
           setError("Error signing up");
         }
       }
       createAccount();
     },
-    [emailAddress, password, repeatPassword, fullName, navigate]
+    [emailAddress, password, repeatPassword, fullName, username, navigate]
   );
 
   const updateEmail = useCallback((email) => setEmailAddress(email), []);

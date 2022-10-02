@@ -6,6 +6,7 @@ import BookmarkButton from "./bookmark-button";
 import { useContext, useState } from "react";
 import { pocketbaseClient } from "../lib/pocketbase";
 import UserContext from "../context/user";
+import { FILES_URL } from "../constants/pocketbase";
 
 export default function TimelinePost({ post }) {
   const { user } = useContext(UserContext);
@@ -36,7 +37,7 @@ export default function TimelinePost({ post }) {
         <Link className="flex items-center" to={`/p/${userprofile?.username}`}>
           <img
             className={`rounded-full h-10 w-10 flex border-2 border-grey-background`}
-            src={`/api/files/systemprofiles0/${userprofile?.id}/${userprofile?.avatar}`}
+            src={`${FILES_URL}systemprofiles0/${userprofile?.id}/${userprofile?.avatar}`}
             alt={`${userprofile?.username}`}
           />
           <p className="ml-2 font-semibold text-black-light h-8">
@@ -48,7 +49,7 @@ export default function TimelinePost({ post }) {
         <div className="mb-4 ">
           <img
             className="w-full max-h-[435px] lg:max-h-screen object-contain bg-black-light"
-            src={`/api/files/posts/${post.id}/${post.media_content}`}
+            src={`${FILES_URL}posts/${post.id}/${post.media_content}`}
             alt={post.text_content}
           />
         </div>
@@ -61,7 +62,10 @@ export default function TimelinePost({ post }) {
         </div>
         <BookmarkButton />
       </div>
-      <div>Likes: {likesNum}</div>
+      <div className="px-2 text-sm mb-2">
+        {!!likesNum && likesNum === 1 && `1 person liked this post`}
+        {!!likesNum && likesNum > 1 && `${likesNum} people liked this post`}
+      </div>
       {post.text_content && (
         <div className="px-2">
           <span className="font-bold text-black-light">
