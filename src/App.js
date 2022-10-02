@@ -8,6 +8,7 @@ const Login = lazy(() => import("./pages/login"));
 const SignUp = lazy(() => import("./pages/signup"));
 const Dashboard = lazy(() => import("./pages/dashboard"));
 const Profile = lazy(() => import("./pages/profile"));
+const Create = lazy(() => import("./pages/create"));
 
 const fallback = "Loading...";
 
@@ -34,6 +35,14 @@ function App() {
           element={
             <Suspense fallback={fallback}>
               <Profile />
+            </Suspense>
+          }
+        />
+        <Route
+          path="/create"
+          element={
+            <Suspense fallback={fallback}>
+              <Create />
             </Suspense>
           }
         />
