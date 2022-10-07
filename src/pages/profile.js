@@ -8,7 +8,6 @@ import UserContext from "../context/user";
 import useFollowing from "../hooks/useFollowing";
 import {
   getFollowersByUsername,
-  getFollowing,
   getFollowingByUsername,
   getUserPostsByUsername,
 } from "../lib/pocketbase";

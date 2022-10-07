@@ -1,12 +1,5 @@
 import { useContext } from "react";
-import {
-  Link,
-  NavLink,
-  useLocation,
-  useNavigate,
-  useNavigation,
-  useResolvedPath,
-} from "react-router-dom";
+import { Link, useNavigate, useResolvedPath } from "react-router-dom";
 import { FILES_URL } from "../constants/pocketbase";
 
 import UserContext from "../context/user";
