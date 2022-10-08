@@ -79,9 +79,9 @@ export default function CreatePost({ userId, profileId, username }) {
             Post
           </ButtonPrimary>
         )}
-        {uploading && (
+        {!uploading && (
           <ButtonPrimary
-            className={`w-auto flex hover:border-blue-medium hover:bg-blue-medium`}
+            className={`w-auto flex items-center hover:border-blue-medium hover:bg-blue-medium`}
             disabled={true}
           >
             <UploadingIcon />
