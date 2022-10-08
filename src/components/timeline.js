@@ -46,7 +46,6 @@ export default function Timeline() {
       ]);
     }
     if (user && following) {
-      console.log({ user });
       timeline();
     }
   }, [user, following]);

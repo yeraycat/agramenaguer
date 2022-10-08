@@ -3,7 +3,6 @@ export default function ProfileActions({
   profileId,
   following,
 }) {
-  console.log({ activeProfileId, profileId });
   return (
     <div className="">
       {activeProfileId !== profileId && following?.includes(profileId) && (

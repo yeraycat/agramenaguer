@@ -16,7 +16,6 @@ export default function CreatePost({ userId, profileId, username }) {
   };
 
   const createPost = async () => {
-    console.log("hola");
     const formData = new FormData();
     formData.append("media_content", imageFile);
     formData.append("text_content", caption);

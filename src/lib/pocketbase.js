@@ -29,7 +29,6 @@ export async function getFollowing(userId) {
         filter: `follower.userId = "${userId}"`,
       }
     );
-    console.log({ following });
     return following.map((follow) => follow.followed);
   } catch (e) {
     if (!e.isAbort) {
@@ -70,7 +69,6 @@ export async function getFollowers(userId) {
         filter: `followed.userId = "${userId}"`,
       }
     );
-    console.log({ following });
     return following.map((follow) => follow.follower);
   } catch (e) {
     if (!e.isAbort) {
@@ -91,7 +89,6 @@ export async function getFollowersByUsername(username) {
         $cancelKey: `followers-${username}`,
       }
     );
-    console.log({ followers });
     return followers.map((follow) => follow.follower);
   } catch (e) {
     if (!e.isAbort) {

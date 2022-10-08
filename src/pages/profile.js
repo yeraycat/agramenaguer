@@ -24,10 +24,8 @@ export default function Profile() {
     async function loadProfileInfo() {
       setPosts(await getUserPostsByUsername(username));
       const followers = await getFollowersByUsername(username);
-      console.log(`Followers for ${username}:`, { followers });
       setFollowersCount(followers.length);
       const following = await getFollowingByUsername(username);
-      console.log(`${username} is following:`, { following });
       setFollowingCount(following.length);
     }
 
