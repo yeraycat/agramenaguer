@@ -13,6 +13,7 @@ export function Avatar({ username, imageUrl, className }) {
       )}
       {!imageUrl && (
         <div
+          data-testid="avatar-fallback"
           className={`rounded-full w-8 h-8 flex mr-3 items-center justify-center bg-grey-primary font-semibold ${className}`}
         >
           {fallbackLetter}

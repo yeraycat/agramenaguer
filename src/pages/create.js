@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import CreatePost from "../components/create-post";
-import Header from "../components/header";
+import Header from "../components/header/header";
 import UserContext from "../context/user";
 
 export default function Create() {

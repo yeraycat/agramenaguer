@@ -2,6 +2,7 @@ export function HomeIconOutlined() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
       fill="none"
       viewBox="0 0 24 24"
       strokeWidth={1.5}
@@ -21,6 +22,7 @@ export function HomeIconFull() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
+      role="img"
       viewBox="0 0 20 20"
       fill="currentColor"
       className="w-8 mr-6 text-black-light cursor-pointer"

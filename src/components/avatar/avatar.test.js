@@ -10,7 +10,7 @@ describe("avatar component", () => {
     expect(imgElement).toBeTruthy();
   });
 
-  it("should render a fallback when only username is passed as prop", () => {
+  it("should render a fallback (first letter of username in uppercase) when only username is passed as prop", () => {
     render(<Avatar username="test" />);
     expect(screen.getByText("T")).toBeTruthy();
   });

@@ -176,3 +176,7 @@ export async function getLikesNumForPosts(postsIds) {
   });
   return likes;
 }
+
+export function logout() {
+  pocketbaseClient.authStore.clear();
+}
