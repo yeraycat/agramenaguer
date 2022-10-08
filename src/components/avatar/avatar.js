@@ -1,17 +1,19 @@
 import PropTypes from "prop-types";
 
-export function Avatar({ imageUrl, username }) {
+export function Avatar({ username, imageUrl, className }) {
   return (
     <>
       {imageUrl && (
         <img
-          className="rounded-full w-8 h-8 flex mr-3"
+          className={`rounded-full w-8 h-8 flex mr-3 ${className}`}
           src={imageUrl}
           alt={`${username}'s avatar`}
         />
       )}
       {!imageUrl && (
-        <div className="rounded-full w-8 h-8 flex mr-3 items-center justify-center bg-grey-primary font-semibold">
+        <div
+          className={`rounded-full w-8 h-8 flex mr-3 items-center justify-center bg-grey-primary font-semibold ${className}`}
+        >
           {username[0].toUpperCase()}
         </div>
       )}
@@ -20,6 +22,6 @@ export function Avatar({ imageUrl, username }) {
 }
 
 Avatar.propTypes = {
-  imageUrl: PropTypes.string,
   username: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
 };

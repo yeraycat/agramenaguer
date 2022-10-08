@@ -14,4 +14,16 @@ describe("avatar component", () => {
     render(<Avatar username="test" />);
     expect(screen.getByText("T")).toBeTruthy();
   });
+
+  it("should extend the img classes if imageUrl and className are passed", () => {
+    render(<Avatar imageUrl="lalala" username="test" className="testClass" />);
+    const imgElement = screen.getByRole("img");
+    expect(imgElement).toHaveClass("testClass");
+  });
+
+  it("should extend the fallback classes if className is passed but not imageUrl", () => {
+    render(<Avatar username="test" className="testClass" />);
+    const fallbackElement = screen.getByText("T");
+    expect(fallbackElement).toHaveClass("testClass");
+  });
 });
