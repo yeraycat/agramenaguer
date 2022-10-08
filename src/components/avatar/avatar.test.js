@@ -26,4 +26,10 @@ describe("avatar component", () => {
     const fallbackElement = screen.getByText("T");
     expect(fallbackElement).toHaveClass("testClass");
   });
+
+  it("should render the fallback text as alt when imageUrl is passed", () => {
+    render(<Avatar username="test" imageUrl="lalala" />);
+    const imgElement = screen.getByRole("img");
+    expect(imgElement).toHaveAttribute("alt", "T");
+  });
 });

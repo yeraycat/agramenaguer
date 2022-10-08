@@ -5,6 +5,7 @@ import { FILES_URL } from "../constants/pocketbase";
 import UserContext from "../context/user";
 
 import { pocketbaseClient } from "../lib/pocketbase";
+import { Avatar } from "./avatar/avatar";
 import { AddIconFull, AddIconOutlined } from "./icons/add";
 import { HomeIconFull, HomeIconOutlined } from "./icons/home";
 import { LogoutIconOutlined } from "./icons/logout";
@@ -43,13 +44,14 @@ export default function Header() {
 
                 <div className="flex items-center cursor-pointer mr-6">
                   <Link to={`/p/${user.profile.username}`}>
-                    <img
-                      className={`rounded-full h-8 w-8 flex border-2 border-grey-background ${
-                        pathname === `/p/${user.profile.username}` &&
-                        "border-black-light"
+                    <Avatar
+                      className={`border-2 ${
+                        pathname === `/p/${user.profile.username}`
+                          ? "border-black-light"
+                          : "border-grey-background"
                       }`}
-                      src={`${FILES_URL}systemprofiles0/${user.profile.id}/${user.profile.avatar}`}
-                      alt="Profile"
+                      username={user.profile.username}
+                      imageUrl={`${FILES_URL}systemprofiles0/${user.profile.id}/${user.profile.avatar}`}
                     />
                   </Link>
                 </div>
