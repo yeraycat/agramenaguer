@@ -19,7 +19,7 @@ export default function Header() {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
 
-  const avatarUrl = `${FILES_URL}systemprofiles0/${user.profile.id}/${user.profile.avatar}`;
+  const avatarUrl = `${FILES_URL}systemprofiles0/${user?.profile.id}/${user?.profile.avatar}`;
 
   return (
     <header className="h-16 bg-white border-b border-grey-primary mb-8 sticky top-0 left-0 z-10">
