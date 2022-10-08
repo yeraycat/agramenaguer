@@ -1,14 +1,9 @@
 import { Link } from "react-router-dom";
-import { baseClassName, disabledClassName } from "./button";
+import { baseClasses } from "./button";
 
-export function LinkButton({ children, onClick, className, disabled }) {
+export function LinkButton({ children, to, className }) {
   return (
-    <Link
-      className={`${
-        disabled && disabledClassName
-      } ${baseClassName} ${className}`}
-      onClick={onClick}
-    >
+    <Link className={`${baseClasses} ${className}`} to={to}>
       {children}
     </Link>
   );
