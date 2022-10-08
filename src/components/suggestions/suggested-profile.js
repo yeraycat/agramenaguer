@@ -24,6 +24,7 @@ export default function SuggestedProfile({
         <div className="mr-3">{username}</div>
       </div>
       <Button
+        className="w-28 h-8"
         onClick={async () => {
           await follow(activeUsersProfileId, profileId);
           setFollowed(true);
