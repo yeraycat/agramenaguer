@@ -1,7 +1,7 @@
 import { useContext } from "react";
-import { FILES_URL } from "../constants/pocketbase";
-import UserContext from "../context/user";
-import Suggestions from "./suggestions";
+import { FILES_URL } from "../../constants/pocketbase";
+import UserContext from "../../context/user";
+import Suggestions from "../suggestions/suggestions";
 import User from "./user";
 
 export default function Sidebar() {

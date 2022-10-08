@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "../components/Header";
-import Sidebar from "../components/sidebar";
+import Sidebar from "../components/sidebar/sidebar";
 import Timeline from "../components/timeline";
 import FollowingContext from "../context/following";
 import UserContext from "../context/user";

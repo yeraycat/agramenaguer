@@ -1,21 +1,11 @@
-import { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
+
 import Skeleton from "react-loading-skeleton";
-import FollowingContext from "../context/following";
-import { getSuggestedProfiles } from "../lib/pocketbase";
 import SuggestedProfile from "./suggested-profile";
+import { useSuggestions } from "./useSuggestions";
 
 export default function Suggestions({ userId, userProfileId }) {
-  const [profiles, setProfiles] = useState(null);
-  const { following } = useContext(FollowingContext);
-  useEffect(() => {
-    async function suggestedProfiles() {
-      const response = await getSuggestedProfiles(userId, following);
-      setProfiles(response);
-    }
-    if (userId && following) {
-      suggestedProfiles();
-    }
-  }, [userId, following]);
+  const { profiles } = useSuggestions(userId);
 
   return (
     <>
@@ -41,3 +31,8 @@ export default function Suggestions({ userId, userProfileId }) {
     </>
   );
 }
+
+Suggestions.propTypes = {
+  userId: PropTypes.string.isRequired,
+  userProfileId: PropTypes.string.isRequired,
+};
