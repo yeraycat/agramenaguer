@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import Header from "../components/Header";
+import Header from "../components/header/header";
 import PostsGallery from "../components/posts-gallery";
 import ProfileHeader from "../components/profile-header";
 
@@ -8,7 +8,6 @@ import UserContext from "../context/user";
 import useFollowing from "../hooks/useFollowing";
 import {
   getFollowersByUsername,
-  getFollowing,
   getFollowingByUsername,
   getUserPostsByUsername,
 } from "../lib/pocketbase";
@@ -25,10 +24,8 @@ export default function Profile() {
     async function loadProfileInfo() {
       setPosts(await getUserPostsByUsername(username));
       const followers = await getFollowersByUsername(username);
-      console.log(`Followers for ${username}:`, { followers });
       setFollowersCount(followers.length);
       const following = await getFollowingByUsername(username);
-      console.log(`${username} is following:`, { following });
       setFollowingCount(following.length);
     }
 

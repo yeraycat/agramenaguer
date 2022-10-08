@@ -29,7 +29,6 @@ export async function getFollowing(userId) {
         filter: `follower.userId = "${userId}"`,
       }
     );
-    console.log({ following });
     return following.map((follow) => follow.followed);
   } catch (e) {
     if (!e.isAbort) {
@@ -70,7 +69,6 @@ export async function getFollowers(userId) {
         filter: `followed.userId = "${userId}"`,
       }
     );
-    console.log({ following });
     return following.map((follow) => follow.follower);
   } catch (e) {
     if (!e.isAbort) {
@@ -91,7 +89,6 @@ export async function getFollowersByUsername(username) {
         $cancelKey: `followers-${username}`,
       }
     );
-    console.log({ followers });
     return followers.map((follow) => follow.follower);
   } catch (e) {
     if (!e.isAbort) {
@@ -161,4 +158,25 @@ export async function getUserPostsByUsername(username) {
       filter: `userprofile.username = "${username}"`,
     });
   } catch (e) {}
+}
+
+export async function getSelfLikesForPosts(activeProfileId, postsIds) {
+  const filter = inFilter("post", postsIds, `userprofile="${activeProfileId}"`);
+
+  const liked = await pocketbaseClient.records.getFullList("likes", 10, {
+    filter,
+    expand: "userprofile,post",
+  });
+  return liked;
+}
+
+export async function getLikesNumForPosts(postsIds) {
+  const likes = await pocketbaseClient.records.getFullList("likes", undefined, {
+    filter: inFilter("post", postsIds),
+  });
+  return likes;
+}
+
+export function logout() {
+  pocketbaseClient.authStore.clear();
 }

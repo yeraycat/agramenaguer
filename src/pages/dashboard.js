@@ -1,8 +1,8 @@
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
-import Sidebar from "../components/sidebar";
-import Timeline from "../components/timeline";
+import Header from "../components/header/header";
+import Sidebar from "../components/sidebar/sidebar";
+import Timeline from "../components/timeline/timeline";
 import FollowingContext from "../context/following";
 import UserContext from "../context/user";
 import useFollowing from "../hooks/useFollowing";

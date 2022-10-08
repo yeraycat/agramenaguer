@@ -1,6 +1,8 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { pocketbaseClient } from "../lib/pocketbase";
+import { ButtonPrimary } from "./buttons/button";
+import { UploadingIcon } from "./icons/uploading";
 
 export default function CreatePost({ userId, profileId, username }) {
   const navigate = useNavigate();
@@ -16,7 +18,6 @@ export default function CreatePost({ userId, profileId, username }) {
   };
 
   const createPost = async () => {
-    console.log("hola");
     const formData = new FormData();
     formData.append("media_content", imageFile);
     formData.append("text_content", caption);
@@ -70,39 +71,22 @@ export default function CreatePost({ userId, profileId, username }) {
           Cancel
         </Link>
         {!uploading && (
-          <button
-            className={`w-28 border-2 text-white border-black-light bg-black-light w-full rounded py-2 px-4 font-bold px-2 ${
-              isInvalid
-                ? "opacity-50 cursor-not-allowed"
-                : "hover:border-blue-medium hover:bg-blue-medium cursor-pointer"
-            }`}
+          <ButtonPrimary
+            className="w-28 hover:border-blue-medium hover:bg-blue-medium"
             onClick={() => createPost()}
             disabled={isInvalid}
           >
             Post
-          </button>
+          </ButtonPrimary>
         )}
         {uploading && (
-          <button
-            className={`w-auto flex border-2 text-white border-black-light bg-black-light w-full rounded py-2 px-4 font-bold px-2 opacity-50 cursor-not-allowed hover:border-blue-medium hover:bg-blue-medium `}
+          <ButtonPrimary
+            className={`w-auto flex hover:border-blue-medium hover:bg-blue-medium`}
             disabled={true}
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="animate-spin w-6 h-6 mr-4"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99"
-              />
-            </svg>
+            <UploadingIcon />
             Uploading
-          </button>
+          </ButtonPrimary>
         )}
       </div>
     </div>
