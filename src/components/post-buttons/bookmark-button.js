@@ -1,4 +1,4 @@
-import { BookmarkIconOutlined } from "./icons/bookmark";
+import { BookmarkIconOutlined } from "../icons/bookmark";
 
 export default function BookmarkButton() {
   return (

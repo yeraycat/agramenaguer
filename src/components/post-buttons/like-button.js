@@ -1,4 +1,4 @@
-import { LikeIconFullRed, LikeIconOutlined } from "./icons/like";
+import { LikeIconFullRed, LikeIconOutlined } from "../icons/like";
 
 export default function LikeButton({ onLike, liked }) {
   return (

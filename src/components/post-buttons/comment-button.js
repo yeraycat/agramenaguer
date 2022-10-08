@@ -1,4 +1,4 @@
-import { CommentIconOutlined } from "./icons/comment";
+import { CommentIconOutlined } from "../icons/comment";
 
 export default function CommentButton() {
   return (
