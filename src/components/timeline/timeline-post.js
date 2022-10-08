@@ -1,12 +1,12 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import { pocketbaseClient } from "../lib/pocketbase";
-import UserContext from "../context/user";
-import { FILES_URL } from "../constants/pocketbase";
-import LikeButton from "./post-buttons/like-button";
-import CommentButton from "./post-buttons/comment-button";
-import SendButton from "./post-buttons/send-button";
-import BookmarkButton from "./post-buttons/bookmark-button";
+import { pocketbaseClient } from "../../lib/pocketbase";
+import UserContext from "../../context/user";
+import { FILES_URL } from "../../constants/pocketbase";
+import LikeButton from "../post-buttons/like-button";
+import CommentButton from "../post-buttons/comment-button";
+import SendButton from "../post-buttons/send-button";
+import BookmarkButton from "../post-buttons/bookmark-button";
 
 export default function TimelinePost({ post }) {
   const { user } = useContext(UserContext);

@@ -159,3 +159,20 @@ export async function getUserPostsByUsername(username) {
     });
   } catch (e) {}
 }
+
+export async function getSelfLikesForPosts(activeProfileId, postsIds) {
+  const filter = inFilter("post", postsIds, `userprofile="${activeProfileId}"`);
+
+  const liked = await pocketbaseClient.records.getFullList("likes", 10, {
+    filter,
+    expand: "userprofile,post",
+  });
+  return liked;
+}
+
+export async function getLikesNumForPosts(postsIds) {
+  const likes = await pocketbaseClient.records.getFullList("likes", undefined, {
+    filter: inFilter("post", postsIds),
+  });
+  return likes;
+}
